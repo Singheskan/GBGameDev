@@ -1,0 +1,214 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 4.1.0 #12072 (MINGW32)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module main
+                                      6 	.optsdcc -mgbz80
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _main
+                                     12 	.globl _set_sprite_data
+                                     13 	.globl _joypad
+                                     14 	.globl _delay
+                                     15 	.globl _TileLabel
+                                     16 ;--------------------------------------------------------
+                                     17 ; special function registers
+                                     18 ;--------------------------------------------------------
+                                     19 ;--------------------------------------------------------
+                                     20 ; ram data
+                                     21 ;--------------------------------------------------------
+                                     22 	.area _DATA
+      000000                         23 _TileLabel::
+      000000                         24 	.ds 32
+                                     25 ;--------------------------------------------------------
+                                     26 ; absolute external ram data
+                                     27 ;--------------------------------------------------------
+                                     28 	.area _DABS (ABS)
+                                     29 ;--------------------------------------------------------
+                                     30 ; global & static initialisations
+                                     31 ;--------------------------------------------------------
+                                     32 	.area _HOME
+                                     33 	.area _GSINIT
+                                     34 	.area _GSFINAL
+                                     35 	.area _GSINIT
+                                     36 ;Export.c:26: unsigned char TileLabel[] =
+      000000 21r00r00                37 	ld	hl, #_TileLabel
+      000003 36 FF                   38 	ld	(hl), #0xff
+      000005 21r01r00                39 	ld	hl, #(_TileLabel + 0x0001)
+      000008 36 FF                   40 	ld	(hl), #0xff
+      00000A 21r02r00                41 	ld	hl, #(_TileLabel + 0x0002)
+      00000D 36 81                   42 	ld	(hl), #0x81
+      00000F 21r03r00                43 	ld	hl, #(_TileLabel + 0x0003)
+      000012 36 81                   44 	ld	(hl), #0x81
+      000014 21r04r00                45 	ld	hl, #(_TileLabel + 0x0004)
+      000017 36 E7                   46 	ld	(hl), #0xe7
+      000019 21r05r00                47 	ld	hl, #(_TileLabel + 0x0005)
+      00001C 36 E7                   48 	ld	(hl), #0xe7
+      00001E 21r06r00                49 	ld	hl, #(_TileLabel + 0x0006)
+      000021 36 81                   50 	ld	(hl), #0x81
+      000023 21r07r00                51 	ld	hl, #(_TileLabel + 0x0007)
+      000026 36 A5                   52 	ld	(hl), #0xa5
+      000028 21r08r00                53 	ld	hl, #(_TileLabel + 0x0008)
+      00002B 36 42                   54 	ld	(hl), #0x42
+      00002D 21r09r00                55 	ld	hl, #(_TileLabel + 0x0009)
+      000030 36 42                   56 	ld	(hl), #0x42
+      000032 21r0Ar00                57 	ld	hl, #(_TileLabel + 0x000a)
+      000035 36 5A                   58 	ld	(hl), #0x5a
+      000037 21r0Br00                59 	ld	hl, #(_TileLabel + 0x000b)
+      00003A 36 42                   60 	ld	(hl), #0x42
+      00003C 21r0Cr00                61 	ld	hl, #(_TileLabel + 0x000c)
+      00003F 36 3C                   62 	ld	(hl), #0x3c
+      000041 21r0Dr00                63 	ld	hl, #(_TileLabel + 0x000d)
+      000044 36 3C                   64 	ld	(hl), #0x3c
+      000046 21r0Er00                65 	ld	hl, #(_TileLabel + 0x000e)
+      000049 36 00                   66 	ld	(hl), #0x00
+      00004B 21r0Fr00                67 	ld	hl, #(_TileLabel + 0x000f)
+      00004E 36 00                   68 	ld	(hl), #0x00
+      000050 21r10r00                69 	ld	hl, #(_TileLabel + 0x0010)
+      000053 36 FF                   70 	ld	(hl), #0xff
+      000055 21r11r00                71 	ld	hl, #(_TileLabel + 0x0011)
+      000058 36 FF                   72 	ld	(hl), #0xff
+      00005A 21r12r00                73 	ld	hl, #(_TileLabel + 0x0012)
+      00005D 36 81                   74 	ld	(hl), #0x81
+      00005F 21r13r00                75 	ld	hl, #(_TileLabel + 0x0013)
+      000062 36 81                   76 	ld	(hl), #0x81
+      000064 21r14r00                77 	ld	hl, #(_TileLabel + 0x0014)
+      000067 36 E7                   78 	ld	(hl), #0xe7
+      000069 21r15r00                79 	ld	hl, #(_TileLabel + 0x0015)
+      00006C 36 E7                   80 	ld	(hl), #0xe7
+      00006E 21r16r00                81 	ld	hl, #(_TileLabel + 0x0016)
+      000071 36 81                   82 	ld	(hl), #0x81
+      000073 21r17r00                83 	ld	hl, #(_TileLabel + 0x0017)
+      000076 36 A5                   84 	ld	(hl), #0xa5
+      000078 21r18r00                85 	ld	hl, #(_TileLabel + 0x0018)
+      00007B 36 42                   86 	ld	(hl), #0x42
+      00007D 21r19r00                87 	ld	hl, #(_TileLabel + 0x0019)
+      000080 36 42                   88 	ld	(hl), #0x42
+      000082 21r1Ar00                89 	ld	hl, #(_TileLabel + 0x001a)
+      000085 36 42                   90 	ld	(hl), #0x42
+      000087 21r1Br00                91 	ld	hl, #(_TileLabel + 0x001b)
+      00008A 36 42                   92 	ld	(hl), #0x42
+      00008C 21r1Cr00                93 	ld	hl, #(_TileLabel + 0x001c)
+      00008F 36 3C                   94 	ld	(hl), #0x3c
+      000091 21r1Dr00                95 	ld	hl, #(_TileLabel + 0x001d)
+      000094 36 3C                   96 	ld	(hl), #0x3c
+      000096 21r1Er00                97 	ld	hl, #(_TileLabel + 0x001e)
+      000099 36 00                   98 	ld	(hl), #0x00
+      00009B 21r1Fr00                99 	ld	hl, #(_TileLabel + 0x001f)
+      00009E 36 00                  100 	ld	(hl), #0x00
+                                    101 ;--------------------------------------------------------
+                                    102 ; Home
+                                    103 ;--------------------------------------------------------
+                                    104 	.area _HOME
+                                    105 	.area _HOME
+                                    106 ;--------------------------------------------------------
+                                    107 ; code
+                                    108 ;--------------------------------------------------------
+                                    109 	.area _CODE
+                                    110 ;main.c:5: void main(){
+                                    111 ;	---------------------------------
+                                    112 ; Function main
+                                    113 ; ---------------------------------
+      000000                        114 _main::
+                                    115 ;main.c:8: set_sprite_data(0, 2, TileLabel);
+      000000 21r00r00               116 	ld	hl, #_TileLabel
+      000003 E5                     117 	push	hl
+      000004 3E 02                  118 	ld	a, #0x02
+      000006 F5                     119 	push	af
+      000007 33                     120 	inc	sp
+      000008 AF                     121 	xor	a, a
+      000009 F5                     122 	push	af
+      00000A 33                     123 	inc	sp
+      00000B CDr00r00               124 	call	_set_sprite_data
+      00000E E8 04                  125 	add	sp, #4
+                                    126 ;c:/gbdk/include/gb/gb.h:1145: shadow_OAM[nb].tile=tile;
+      000010 21r02r00               127 	ld	hl, #(_shadow_OAM + 0x0002)
+      000013 36 00                  128 	ld	(hl), #0x00
+                                    129 ;c:/gbdk/include/gb/gb.h:1218: OAM_item_t * itm = &shadow_OAM[nb];
+      000015 21r00r00               130 	ld	hl, #_shadow_OAM
+                                    131 ;c:/gbdk/include/gb/gb.h:1219: itm->y=y, itm->x=x;
+      000018 3E 4E                  132 	ld	a, #0x4e
+      00001A 22                     133 	ld	(hl+), a
+      00001B 36 58                  134 	ld	(hl), #0x58
+                                    135 ;main.c:11: SHOW_SPRITES;
+      00001D F0r00                  136 	ldh	a, (_LCDC_REG+0)
+      00001F F6 02                  137 	or	a, #0x02
+      000021 E0r00                  138 	ldh	(_LCDC_REG+0),a
+                                    139 ;main.c:13: while(1){
+      000023                        140 00107$:
+                                    141 ;main.c:14: switch(joypad()){
+      000023 CDr00r00               142 	call	_joypad
+      000026 7B                     143 	ld	a, e
+      000027 3D                     144 	dec	a
+      000028 28 1A                  145 	jr	Z, 00102$
+      00002A 7B                     146 	ld	a,e
+      00002B FE 02                  147 	cp	a,#0x02
+      00002D 28 0A                  148 	jr	Z, 00101$
+      00002F FE 04                  149 	cp	a,#0x04
+      000031 28 1C                  150 	jr	Z, 00103$
+      000033 D6 08                  151 	sub	a, #0x08
+      000035 28 23                  152 	jr	Z, 00104$
+      000037 18 2A                  153 	jr	00105$
+                                    154 ;main.c:15: case J_LEFT: 
+      000039                        155 00101$:
+                                    156 ;c:/gbdk/include/gb/gb.h:1234: OAM_item_t * itm = &shadow_OAM[nb];
+      000039 01r00r00               157 	ld	bc, #_shadow_OAM+0
+                                    158 ;c:/gbdk/include/gb/gb.h:1235: itm->y+=y, itm->x+=x;
+      00003C 0A                     159 	ld	a, (bc)
+      00003D 02                     160 	ld	(bc), a
+      00003E 03                     161 	inc	bc
+      00003F 0A                     162 	ld	a, (bc)
+      000040 3D                     163 	dec	a
+      000041 02                     164 	ld	(bc), a
+                                    165 ;main.c:17: break;
+      000042 18 1F                  166 	jr	00105$
+                                    167 ;main.c:18: case J_RIGHT: 
+      000044                        168 00102$:
+                                    169 ;c:/gbdk/include/gb/gb.h:1234: OAM_item_t * itm = &shadow_OAM[nb];
+      000044 01r00r00               170 	ld	bc, #_shadow_OAM
+                                    171 ;c:/gbdk/include/gb/gb.h:1235: itm->y+=y, itm->x+=x;
+      000047 0A                     172 	ld	a, (bc)
+      000048 02                     173 	ld	(bc), a
+      000049 03                     174 	inc	bc
+      00004A 0A                     175 	ld	a, (bc)
+      00004B 3C                     176 	inc	a
+      00004C 02                     177 	ld	(bc), a
+                                    178 ;main.c:20: break;  
+      00004D 18 14                  179 	jr	00105$
+                                    180 ;main.c:21: case J_UP: 
+      00004F                        181 00103$:
+                                    182 ;c:/gbdk/include/gb/gb.h:1234: OAM_item_t * itm = &shadow_OAM[nb];
+      00004F 01r00r00               183 	ld	bc, #_shadow_OAM
+                                    184 ;c:/gbdk/include/gb/gb.h:1235: itm->y+=y, itm->x+=x;
+      000052 0A                     185 	ld	a, (bc)
+      000053 3D                     186 	dec	a
+      000054 02                     187 	ld	(bc), a
+      000055 03                     188 	inc	bc
+      000056 0A                     189 	ld	a, (bc)
+      000057 02                     190 	ld	(bc), a
+                                    191 ;main.c:23: break; 
+      000058 18 09                  192 	jr	00105$
+                                    193 ;main.c:24: case J_DOWN: 
+      00005A                        194 00104$:
+                                    195 ;c:/gbdk/include/gb/gb.h:1234: OAM_item_t * itm = &shadow_OAM[nb];
+      00005A 01r00r00               196 	ld	bc, #_shadow_OAM
+                                    197 ;c:/gbdk/include/gb/gb.h:1235: itm->y+=y, itm->x+=x;
+      00005D 0A                     198 	ld	a, (bc)
+      00005E 3C                     199 	inc	a
+      00005F 02                     200 	ld	(bc), a
+      000060 03                     201 	inc	bc
+      000061 0A                     202 	ld	a, (bc)
+      000062 02                     203 	ld	(bc), a
+                                    204 ;main.c:27: }
+      000063                        205 00105$:
+                                    206 ;main.c:28: delay(100);
+      000063 21 64 00               207 	ld	hl, #0x0064
+      000066 E5                     208 	push	hl
+      000067 CDr00r00               209 	call	_delay
+      00006A E8 02                  210 	add	sp, #2
+                                    211 ;main.c:30: }
+      00006C 18 B5                  212 	jr	00107$
+                                    213 	.area _CODE
+                                    214 	.area _CABS (ABS)
